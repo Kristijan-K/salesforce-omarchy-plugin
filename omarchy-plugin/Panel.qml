@@ -134,6 +134,15 @@ Panel {
     Qt.callLater(function() { keyCatcher.forceActiveFocus() })
   }
 
+  function commitSearch() {
+    var orgs = filteredOrgs()
+    selectedIndex = Math.max(0, Math.min(selectedIndex, orgs.length - 1))
+    Qt.callLater(function() {
+      keyCatcher.forceActiveFocus()
+      orgList.positionViewAtIndex(selectedIndex, ListView.Contain)
+    })
+  }
+
   function refreshIfEmpty() {
     if (liveService && liveService.cacheLoaded && liveService.orgs.length === 0 && liveService.lastRefreshAt === "")
       liveService.refresh()
@@ -230,7 +239,7 @@ Panel {
           placeholderText: "Search orgs"
           text: root.searchQuery
           onTextChanged: root.searchQuery = text
-          onAccepted: root.closeSearch()
+          onAccepted: root.commitSearch()
         }
 
         ListView {
