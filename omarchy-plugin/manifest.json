@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.kkosu.salesforce-orgs",
+  "name": "Salesforce Orgs",
+  "version": "1.0.0",
+  "author": "kkosu",
+  "license": "MIT",
+  "description": "Browse, open, reauthenticate, and add Salesforce CLI orgs from the Omarchy bar.",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Salesforce Orgs",
+    "description": "Manage Salesforce CLI org connections.",
+    "category": "Development",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "refreshIntervalSec": 60
+    },
+    "schema": [
+      {
+        "key": "refreshIntervalSec",
+        "type": "integer",
+        "label": "Refresh interval (seconds)",
+        "min": 15,
+        "max": 3600,
+        "step": 15,
+        "defaultValue": 60
+      }
+    ]
+  }
+}
