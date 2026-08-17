@@ -107,6 +107,10 @@ function statusIsConnected(org) {
   return org && String(org.status || "") === "Connected"
 }
 
+function safeName(value) {
+  return String(value || "").replace(/[^A-Za-z0-9._-]/g, "_")
+}
+
 function trimUrl(value) {
   return String(value || "").trim().replace(/\/$/, "")
 }

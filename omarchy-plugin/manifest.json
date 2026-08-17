@@ -5,9 +5,11 @@
   "version": "1.0.0",
   "author": "kkosu",
   "license": "MIT",
-  "description": "Browse, open, reauthenticate, and add Salesforce CLI orgs from the Omarchy bar.",
-  "kinds": ["bar-widget"],
+  "description": "Browse, open, reauthenticate, and add Salesforce CLI orgs from Omarchy.",
+  "kinds": ["service", "bar-widget"],
+  "keepLoaded": true,
   "entryPoints": {
+    "service": "Service.qml",
     "barWidget": "Panel.qml"
   },
   "barWidget": {
@@ -16,19 +18,7 @@
     "category": "Development",
     "allowMultiple": false,
     "defaultSection": "right",
-    "defaults": {
-      "refreshIntervalSec": 60
-    },
-    "schema": [
-      {
-        "key": "refreshIntervalSec",
-        "type": "integer",
-        "label": "Refresh interval (seconds)",
-        "min": 15,
-        "max": 3600,
-        "step": 15,
-        "defaultValue": 60
-      }
-    ]
+    "defaults": {},
+    "schema": []
   }
 }

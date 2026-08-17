@@ -1,0 +1,2 @@
+module Quickshell.Io
+StdioCollector 1.0 StdioCollector.qml

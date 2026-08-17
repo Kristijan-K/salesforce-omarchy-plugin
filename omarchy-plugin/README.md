@@ -1,6 +1,6 @@
 # Salesforce Orgs Omarchy Plugin
 
-An Omarchy Quattro bar widget for Salesforce CLI orgs.
+An Omarchy Quattro Salesforce org manager with a transient popup and bar icon.
 
 ## Features
 
@@ -8,10 +8,12 @@ An Omarchy Quattro bar widget for Salesforce CLI orgs.
 - Sorts connected orgs first, then sorts by name
 - Shows alias, username, login URL, connection status, environment, and default-org marker
 - Opens the selected org in a browser
-- Reauthenticates the selected org with browser login
+- Reauthenticates the selected org with a live `sf org login web` process
+- Removes an org after confirmation
 - Adds production, sandbox, or custom-url orgs
-- Refreshes periodically and on middle-click
+- Loads the last cached snapshot and refreshes manually with `G` or middle-click
 - Supports keyboard and mouse navigation
+- Opens from the bar icon or `SUPER CTRL ALT S`
 
 ## Keyboard shortcuts
 
@@ -19,10 +21,13 @@ Inside the panel:
 
 - Up/down arrows or `j`/`k`: move through orgs
 - `Enter` or `o`: open the selected org
-- `r`: reauthenticate the selected org
+- `r`: start the selected org's Salesforce browser login
+- `g`: refresh all orgs and update the cached snapshot
+- `a`: add an org
+- `X`: remove the selected org after confirmation
 - `/`: search by org name, alias, or username
 - `a`: add an org, then press Enter to choose the environment and Enter again to enter details
-- `Esc`: close the panel or cancel the add form
+- `Esc`: close the popup
 - `p`/`s`/`c`: choose production, sandbox, or custom URL in the add form
 
 ## Requirements
