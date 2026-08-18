@@ -2,6 +2,8 @@
 
 An Omarchy Quattro plugin that manages Salesforce CLI org connections from the bar: browse connected orgs, open them in a browser, reauthenticate, and add new orgs — all keyboard-driven from a bar popup.
 
+Built for Salesforce developers who work across multiple orgs, the plugin reduces context switching by putting org access and authentication management a few keystrokes away. Quickly open the right org, reauthenticate a connection, refresh the org list, or add a new environment without leaving your desktop workflow.
+
 The repository root is the plugin folder (`manifest.json` sits beside the entry points), so it validates with `omarchy plugin validate` exactly as published.
 
 ![Salesforce Orgs panel](preview.png)
