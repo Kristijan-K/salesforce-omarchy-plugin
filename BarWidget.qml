@@ -223,9 +223,11 @@ Panel {
         Text {
           Layout.fillWidth: true
           visible: liveService && (liveService.actionStatus !== "" || liveService.lastRefreshAt !== "")
-          text: liveService && liveService.actionStatus !== ""
-            ? liveService.actionStatus
-            : "Last refresh: " + new Date(liveService.lastRefreshAt).toLocaleString()
+          text: !liveService
+            ? "Loading..."
+            : liveService.actionStatus !== ""
+              ? liveService.actionStatus
+              : "Last refresh: " + new Date(liveService.lastRefreshAt).toLocaleString()
           color: liveService && liveService.lastError !== "" ? Color.urgent : Color.accent
           font.family: Style.font.family
           font.pixelSize: Style.font.bodySmall
