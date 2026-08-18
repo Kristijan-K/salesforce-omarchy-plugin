@@ -10,7 +10,7 @@
   "keepLoaded": true,
   "entryPoints": {
     "service": "Service.qml",
-    "barWidget": "Panel.qml"
+    "barWidget": "BarWidget.qml"
   },
   "barWidget": {
     "displayName": "Salesforce Orgs",

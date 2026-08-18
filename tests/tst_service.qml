@@ -1,6 +1,6 @@
 import QtQuick
 import QtTest
-import "../omarchy-plugin"
+import ".."
 
 TestCase {
   name: "Service"

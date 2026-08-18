@@ -2,14 +2,17 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SOURCE_DIR="$ROOT_DIR/omarchy-plugin"
-PLUGIN_ID="$(jq -r '.id' "$SOURCE_DIR/manifest.json")"
+PLUGIN_ID="$(jq -r '.id' "$ROOT_DIR/manifest.json")"
 TARGET_DIR="$HOME/.config/omarchy/plugins/$PLUGIN_ID"
 
-omarchy plugin validate "$SOURCE_DIR"
+# The repository root is the plugin folder: manifest.json sits beside the
+# entry points so the marketplace validation sees the same layout users get.
+PLUGIN_FILES=(manifest.json BarWidget.qml Service.qml Model.js SalesforceIcon.qml auth-web-login.sh README.md LICENSE)
+
+omarchy plugin validate "$ROOT_DIR"
 mkdir -p "$TARGET_DIR"
 find "$TARGET_DIR" -maxdepth 1 -type f -delete
-cp "$SOURCE_DIR"/* "$TARGET_DIR/"
+cp "${PLUGIN_FILES[@]/#/$ROOT_DIR/}" "$TARGET_DIR/"
 
 # Rescanning does not reconstruct an already enabled QML component. Disable
 # first so local installs always load the files that were just copied.
@@ -22,4 +25,4 @@ omarchy plugin enable "$PLUGIN_ID"
 
 omarchy bar put "$PLUGIN_ID" --section right
 omarchy-restart-shell
-echo "Installed $PLUGIN_ID from $SOURCE_DIR"
+echo "Installed $PLUGIN_ID from $ROOT_DIR"

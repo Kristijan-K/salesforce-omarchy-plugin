@@ -458,6 +458,7 @@ Panel {
         else if (event.key === Qt.Key_Down || event.text === "j") { root.moveSelection(1); event.accepted = true }
         else if (event.key === Qt.Key_Up || event.text === "k") { root.moveSelection(-1); event.accepted = true }
         else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) { root.openSelected(); event.accepted = true }
+        else if (event.text === "o" || event.text === "O") { root.openSelected(); event.accepted = true }
         else if (event.text === "r" || event.text === "R") { root.reauthenticateSelected(); event.accepted = true }
         else if (event.text === "a" || event.text === "A") { root.beginAdd(); event.accepted = true }
         else if (event.text === "/") { root.beginSearch(); event.accepted = true }
