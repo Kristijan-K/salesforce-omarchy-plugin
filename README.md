@@ -17,7 +17,7 @@ The repository root is the plugin folder (`manifest.json` sits beside the entry 
 - Logs an org out of the local CLI after confirmation
 - Loads the last cached snapshot instantly; refresh manually with `G` or middle-click
 - Full keyboard and mouse navigation
-- Opens from the bar icon or `SUPER CTRL ALT S`
+- Opens from the bar icon; an optional `SUPER CTRL ALT S` binding is documented below
 
 ## Keyboard shortcuts
 
@@ -53,6 +53,16 @@ omarchy plugin add https://github.com/Kristijan-K/salesforce-omarchy-plugin.git 
 ```
 
 Review the repository confirmation prompt and choose the bar placement when Omarchy asks. `omarchy plugin install` is an alias for the same command.
+
+## Optional keybinding
+
+The Omarchy installer does not modify Hyprland keybindings. To open the panel with `SUPER CTRL ALT S`, add this line to `~/.config/hypr/bindings.lua`:
+
+```lua
+o.bind("SUPER + CTRL + ALT + S", "Salesforce orgs", "omarchy-shell shell summon io.github.kristijan-k.salesforce-orgs '{}'")
+```
+
+Reload Hyprland after saving the file. The bar icon remains available without this optional binding.
 
 For a manual installation from a checkout of this repository:
 
@@ -117,7 +127,7 @@ The local-add command clones the committed state of the checkout, so commit chan
 omarchy plugin remove "io.github.kristijan-k.salesforce-orgs" --yes
 ```
 
-Edit files at the repository root, run the tests, validate the manifest, and test from the bar icon or `SUPER CTRL ALT S`.
+Edit files at the repository root, run the tests, validate the manifest, and test from the bar icon or the optional keybinding above.
 
 ## License
 
