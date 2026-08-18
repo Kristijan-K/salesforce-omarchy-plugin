@@ -4,6 +4,8 @@ An Omarchy Quattro plugin that manages Salesforce CLI org connections from the b
 
 The repository root is the plugin folder (`manifest.json` sits beside the entry points), so it validates with `omarchy plugin validate` exactly as published.
 
+![Salesforce Orgs panel](preview.png)
+
 ## Features
 
 - Lists all orgs returned by `sf org list --json`
@@ -44,10 +46,18 @@ The plugin executes Salesforce CLI commands directly and does not store credenti
 
 ## Installation
 
-From a checkout of this repository:
+The standard Omarchy installation process clones the public repository, validates its root manifest, and can enable the plugin in one command:
 
 ```bash
-PLUGIN_ID="io.github.kkosu.salesforce-orgs"
+omarchy plugin add https://github.com/Kristijan-K/salesforce-omarchy-plugin.git --enable
+```
+
+Review the repository confirmation prompt and choose the bar placement when Omarchy asks. `omarchy plugin install` is an alias for the same command.
+
+For a manual installation from a checkout of this repository:
+
+```bash
+PLUGIN_ID="io.github.kristijan-k.salesforce-orgs"
 mkdir -p "$HOME/.config/omarchy/plugins/$PLUGIN_ID"
 cp manifest.json BarWidget.qml Service.qml Model.js SalesforceIcon.qml auth-web-login.sh README.md LICENSE \
   "$HOME/.config/omarchy/plugins/$PLUGIN_ID/"
@@ -66,7 +76,7 @@ Or use the dev installer (validates, copies, rescans, enables, and places the wi
 ## Removal
 
 ```bash
-PLUGIN_ID="io.github.kkosu.salesforce-orgs"
+PLUGIN_ID="io.github.kristijan-k.salesforce-orgs"
 omarchy plugin disable "$PLUGIN_ID"
 omarchy plugin remove "$PLUGIN_ID"
 ```
@@ -91,10 +101,23 @@ Browser authentication (`sf org login web`) runs detached via `auth-web-login.sh
 
 ```bash
 ./run-tests.sh       # QML state-machine tests (offscreen qmltestrunner)
-./install-local.sh   # validate + copy + rescan + enable + place on bar
+omarchy plugin validate .
+./install-local.sh   # developer shortcut for testing the current checkout
 ```
 
-Edit files at the repository root, run `./install-local.sh`, then test from the bar icon or `SUPER CTRL ALT S`.
+`install-local.sh` is not required for normal users. It copies the current working tree into Omarchy without requiring a GitHub push, which is useful while developing changes locally. The closest test of the default installer is:
+
+```bash
+omarchy plugin add "$PWD" --enable --yes
+```
+
+The local-add command clones the committed state of the checkout, so commit changes first when using it. Remove that test installation with:
+
+```bash
+omarchy plugin remove "io.github.kristijan-k.salesforce-orgs" --yes
+```
+
+Edit files at the repository root, run the tests, validate the manifest, and test from the bar icon or `SUPER CTRL ALT S`.
 
 ## License
 

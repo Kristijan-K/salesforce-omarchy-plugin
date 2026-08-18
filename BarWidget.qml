@@ -23,7 +23,7 @@ Panel {
   property int selectedIndex: 0
   property bool deleteConfirmation: false
   property var deleteOrg: null
-  readonly property string pluginId: manifest && manifest.id ? manifest.id : "io.github.kkosu.salesforce-orgs"
+  readonly property string pluginId: manifest && manifest.id ? manifest.id : "io.github.kristijan-k.salesforce-orgs"
   readonly property var liveService: service || (bar && bar.shell ? bar.shell.serviceFor(pluginId) : null)
   readonly property var addTypes: ["Production", "Sandbox", "Custom URL"]
 
