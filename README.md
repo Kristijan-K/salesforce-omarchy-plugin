@@ -79,12 +79,6 @@ omarchy plugin enable "$PLUGIN_ID"
 omarchy bar put "$PLUGIN_ID" --section right
 ```
 
-Or use the dev installer (validates, copies, rescans, enables, and places the widget):
-
-```bash
-./install-local.sh
-```
-
 ## Removal
 
 ```bash
@@ -114,10 +108,9 @@ Browser authentication (`sf org login web`) runs detached via `auth-web-login.sh
 ```bash
 ./run-tests.sh       # QML state-machine tests (offscreen qmltestrunner)
 omarchy plugin validate .
-./install-local.sh   # developer shortcut for testing the current checkout
 ```
 
-`install-local.sh` is not required for normal users. It copies the current working tree into Omarchy without requiring a GitHub push, which is useful while developing changes locally. The closest test of the default installer is:
+The closest test of the default installer from a local checkout is:
 
 ```bash
 omarchy plugin add "$PWD" --enable --yes
